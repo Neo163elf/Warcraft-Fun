@@ -1,0 +1,634 @@
+/* Основные стили */
+:root {
+    --warcraft-gold: #c8aa6e;
+    --warcraft-brown: #372e29;
+    --warcraft-red: #a52a2a;
+    --warcraft-blue: #0d5673;
+    --light-bg: #f5e9d7;
+    --dark-text: #2c241e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 200px;
+}
+
+/* Боковые декоративные элементы */
+body {
+    margin: 0;
+}
+
+.faction-decoration {
+    position: fixed;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: -1;
+    opacity: 1;
+    transition: transform 0.3s ease;
+    /* Убираем фоновые свойства */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.faction-icon {
+    max-width: 100%; /* Ограничиваем по ширине контейнера */
+    max-height: 100%; /* Ограничиваем по высоте контейнера */
+    object-fit: contain; /* Аналог background-size: contain */
+}
+
+.alliance-side {
+    left: 0;
+}
+
+.horde-side {
+    right: 0;
+}
+
+/* Хедер и навигация */
+header {
+    background-color: var(--warcraft-brown);
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    color: var(--warcraft-gold);
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu li {
+    margin-left: 25px;
+}
+
+.nav-menu a {
+    color: var(--warcraft-gold);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.nav-menu a:hover {
+    color: #fff;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--warcraft-gold);
+    transition: width 0.3s;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+    z-index: 101;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--warcraft-gold);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Стили для слайдера */
+.hero-slider {
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-container {
+    position: relative;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.slide:nth-child(1) {
+    background-image: linear-gradient(rgba(55, 46, 41, 0.7), rgba(55, 46, 41, 0.8));
+}
+
+.slide:nth-child(2) {
+    background-image: linear-gradient(rgba(55, 46, 41, 0.7), rgba(55, 46, 41, 0.8));
+}
+
+.slide:nth-child(3) {
+    background-image: linear-gradient(rgba(55, 46, 41, 0.7), rgba(55, 46, 41, 0.8));
+}
+
+.slide-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.slide-content h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.slide-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Кнопки слайдера */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(200, 170, 110, 0.7);
+    border: none;
+    color: var(--warcraft-brown);
+    font-size: 1.5rem;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover {
+    background-color: var(--warcraft-gold);
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+/* Индикаторы слайдов */
+.slider-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.indicator.active {
+    background-color: var(--warcraft-gold);
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    background-color: var(--warcraft-red);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    border: 2px solid var(--warcraft-brown);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    background-color: #8a1f1f;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn:hover::after {
+    left: 100%;
+}
+
+/* Категории рас */
+.categories {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--warcraft-brown);
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--warcraft-brown), var(--warcraft-gold), var(--warcraft-brown));
+}
+
+.races-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.race-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--warcraft-gold);
+}
+
+.race-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.race-image {
+    height: 200px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.race-info {
+    padding: 20px;
+}
+
+.race-info h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--warcraft-blue);
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--warcraft-gold);
+    padding-bottom: 10px;
+}
+
+.race-info p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* Добавьте эти правила в конец вашего CSS */
+.race-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.race-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.race-info .btn {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+/* Футер */
+footer {
+    background-color: var(--warcraft-brown);
+    color: var(--warcraft-gold);
+    padding: 50px 20px 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.footer-section h3 {
+    font-family: 'Cinzel', serif;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--warcraft-gold);
+    padding-bottom: 10px;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: var(--warcraft-gold);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: block;
+    padding: 5px 0;
+}
+
+.footer-links a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(200, 170, 110, 0.3);
+    font-size: 0.9rem;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.categories {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        background-color: var(--warcraft-brown);
+        flex-direction: column;
+        width: 70%;
+        text-align: center;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        padding-top: 80px;
+        z-index: 99;
+    }
+    
+    .nav-menu.active {
+        transform: translateX(0);
+    }
+    
+    .nav-menu li {
+        margin: 20px 0;
+    }
+    
+    .burger {
+        display: block;
+    }
+    
+    .burger.active .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .burger.active .line2 {
+        opacity: 0;
+    }
+    
+    .burger.active .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    
+    .faction-decoration {
+        width: 80px;
+    }
+    
+    .slide-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 2rem;
+    }
+    
+    .slide-content h1 {
+        font-size: 2rem;
+    }
+    
+    .slide-content p {
+        font-size: 1rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+    }
+}
+
+/* Карта Азерота */
+.azeroth-map {
+    padding: 60px 20px;
+    background-color: #1a120b;
+    position: relative;
+}
+
+.map-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 3px solid var(--warcraft-gold);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.map-image {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.map-point {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.3s;
+}
+
+.map-point .point {
+    width: 20px;
+    height: 20px;
+    background-color: var(--warcraft-red);
+    border: 2px solid var(--warcraft-gold);
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s;
+}
+
+.map-point .location-info {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(55, 46, 41, 0.9);
+    padding: 15px;
+    border-radius: 4px;
+    border-left: 3px solid var(--warcraft-gold);
+    width: 250px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 10;
+}
+
+.map-point:hover .point {
+    background-color: var(--warcraft-gold);
+    transform: scale(1.3);
+}
+
+.map-point:hover .location-info {
+    opacity: 1;
+    visibility: visible;
+    left: 40px;
+}
+
+.location-info h3 {
+    color: var(--warcraft-gold);
+    margin-bottom: 8px;
+    font-family: 'Cinzel', serif;
+}
+
+.location-info p {
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.image-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Затемнение для лучшей читаемости текста */
+.slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(55, 46, 41, 0.7), rgba(55, 46, 41, 0.8));
+    z-index: -1;
+}
