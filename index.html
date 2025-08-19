@@ -3,140 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Фанатский сайт по вселенной World of Warcraft. Изучите лор, расы, персонажи и локации Азерота.">
     <title>World of Warcraft Chronicles | Фанатский сайт</title>
+    
+    <!-- Предзагрузка критически важных ресурсов -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Open+Sans:wght@400;700&display=swap" as="style">
+    
+    <!-- Основные стили -->
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Иконка сайта -->
+    <link rel="icon" href="assets/image/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!-- Декоративные элементы фракций -->
-    <div class="faction-decoration alliance-side"></div>
-    <div class="faction-decoration horde-side"></div>
-
+    <!-- ===== ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ ФРАКЦИЙ ===== -->
     <div class="faction-decoration alliance-side">
-    <img src="assets/image/alliance.webp" alt="Alliance" class="faction-icon">
+        <img src="assets/image/alliance.webp" alt="Alliance" class="faction-icon" loading="lazy">
     </div>
     <div class="faction-decoration horde-side">
-    <img src="assets/image/horde.webp" alt="Horde" class="faction-icon">
+        <img src="assets/image/horde.webp" alt="Horde" class="faction-icon" loading="lazy">
     </div>
     
-    <!-- Хедер -->
+    <!-- ===== ШАПКА САЙТА ===== -->
     <header>
         <div class="header-container">
+            <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+                <span class="line1"></span>
+                <span class="line2"></span>
+                <span class="line3"></span>
+            </button>
+            
             <a href="#" class="logo">Azeroth Chronicles</a>
             
-            <!-- Бургер-меню для мобильных -->
-            <div class="burger" id="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-            
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#">Лор</a></li>
-                <li><a href="#">Расы</a></li>
-                <li><a href="#">Персонажи</a></li>
-                <li><a href="#">Локации</a></li>
-                <li><a href="#">Истории</a></li>
-                <li><a href="#">Галерея</a></li>
-            </ul>
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="#" data-translate="lore">Лор</a></li>
+                    <li><a href="#" data-translate="races">Расы</a></li>
+                    <li><a href="#" data-translate="characters">Персонажи</a></li>
+                    <li><a href="#" data-translate="locations">Локации</a></li>
+                    <li><a href="#" data-translate="stories">Истории</a></li>
+                    <li><a href="#" data-translate="gallery">Галерея</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Главный баннер-слайдер -->
-    <section class="hero-slider">
-    <div class="slider-container">
-        <!-- Слайд 1 (Видео) -->
-        <div class="slide active">
-            <video autoplay muted loop playsinline class="video-bg">
-                <source src="assets/video/tavern1.mp4" type="video/mp4">
-                Ваш браузер не поддерживает видео.
-            </video>
-            <div class="slide-content">
-                <h1>Добро пожаловать в таверну!</h1>
-                <p>Здесь Вы можете узнать тайны Азерота, а также насладиться каждого его уголка.</p>
-                <a href="#" class="btn">Исследовать</a>
+    <!-- ===== ГЛАВНЫЙ БАННЕР-СЛАЙДЕР ===== -->
+    <section class="hero-slider" aria-label="Slideshow gallery">
+        <div class="slider-container">
+            <!-- Слайд 1 (Видео) -->
+            <div class="slide active" aria-hidden="false">
+                <video autoplay muted loop playsinline class="video-bg" aria-label="Tavern in Azeroth">
+                    <source src="assets/video/tavern1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="slide-content">
+                    <h1 data-translate="welcome">Добро пожаловать в таверну!</h1>
+                    <p data-translate="welcomeDesc">Здесь Вы можете узнать тайны Азерота, а также насладиться каждого его уголка.</p>
+                    <a href="#" class="btn" data-translate="explore">Исследовать</a>
+                </div>
             </div>
-        </div>
-        
-        <!-- Слайд 2 (Изображение) -->
-        <div class="slide">
-            <img src="assets/image/ashbringer.jpg" alt="Тайна Испепелителя" class="image-bg">
-            <div class="slide-content">
-                <h1>Тайна Испепелителя</h1>
-                <p>Узнайте секрет создания Испепелителя, о котором знают лишь единицы.</p>
-                <a href="#" class="btn">Узнать историю</a>
+            
+            <!-- Слайд 2 (Изображение) -->
+            <div class="slide" aria-hidden="true">
+                <img src="assets/image/ashbringer.jpg" alt="Legendary Ashbringer sword" class="image-bg" loading="lazy">
+                <div class="slide-content">
+                    <h1 data-translate="ashbringer">Тайна Испепелителя</h1>
+                    <p data-translate="ashbringerDesc">Узнайте секрет создания Испепелителя, о котором знают лишь единицы.</p>
+                    <a href="#" class="btn" data-translate="learnHistory">Узнать историю</a>
+                </div>
             </div>
-        </div>
-        
-        <!-- Слайд 3 (Изображение) -->
-        <div class="slide">
-            <img src="assets/image/dark_portal.jpg" alt="Темные Порталы" class="image-bg">
-            <div class="slide-content">
-                <h1>Темные Порталы</h1>
-                <p>Путешествие между мирами через магические врата</p>
-                <a href="#" class="btn">Войти в портал</a>
+            
+            <!-- Слайд 3 (Изображение) -->
+            <div class="slide" aria-hidden="true">
+                <img src="assets/image/dark_portal.jpg" alt="Dark Portal between worlds" class="image-bg" loading="lazy">
+                <div class="slide-content">
+                    <h1 data-translate="darkPortal">Темные Порталы</h1>
+                    <p data-translate="darkPortalDesc">Путешествие между мирами через магические врата</p>
+                    <a href="#" class="btn" data-translate="enterPortal">Войти в портал</a>
+                </div>
             </div>
-        </div>
-        
-        <!-- Кнопки навигации слайдера -->
-        <button class="slider-btn prev-btn" id="prevBtn">❮</button>
-        <button class="slider-btn next-btn" id="nextBtn">❯</button>
-        
-        <!-- Индикаторы слайдов -->
-        <div class="slider-indicators">
-            <span class="indicator active" data-slide="0"></span>
-            <span class="indicator" data-slide="1"></span>
-            <span class="indicator" data-slide="2"></span>
-        </div>
-    </div>
-</section>
-
-    <!-- Категории рас -->
-    <section class="categories">
-        <h2 class="section-title">Расы Азерота</h2>
-        <div class="races-grid">
-            <!-- Карточки будут добавлены здесь -->
+            
+            <!-- Элементы управления слайдером -->
+            <button class="slider-btn prev-btn" id="prevBtn" aria-label="Previous slide">❮</button>
+            <button class="slider-btn next-btn" id="nextBtn" aria-label="Next slide">❯</button>
+            
+            <!-- Индикаторы прогресса слайдов -->
+            <div class="slider-indicators" role="tablist">
+                <button class="indicator active" data-slide="0" aria-label="Show slide 1" role="tab" aria-selected="true"></button>
+                <button class="indicator" data-slide="1" aria-label="Show slide 2" role="tab" aria-selected="false"></button>
+                <button class="indicator" data-slide="2" aria-label="Show slide 3" role="tab" aria-selected="false"></button>
+            </div>
         </div>
     </section>
 
-    <!-- Интерактивная карта Азерота -->
-<section class="azeroth-map">
-    <h2 class="section-title">Карта Азерота</h2>
-    <div class="map-container">
-        <img src="assets/image/map.jpg" alt="Карта Азерота" class="map-image">
-        
-        <!-- Интерактивные точки на карте -->
-        <div class="map-point" style="top: 66%; left: 84%;" data-location="stormwind">
-            <div class="point"></div>
-            <div class="location-info">
-                <h3>Штормград</h3>
-                <p>Столица Альянса, королевство людей</p>
-            </div>
+    <!-- ===== КАТЕГОРИИ РАС ===== -->
+    <section class="categories">
+        <h2 class="section-title" data-translate="racesTitle">Расы Азерота</h2>
+        <div class="races-grid" role="list">
+            <!-- Карточки будут динамически добавлены через JavaScript -->
         </div>
-        
-        <div class="map-point" style="top: 50%; left: 22%;" data-location="orgrimmar">
-            <div class="point"></div>
-            <div class="location-info">
-                <h3>Оргриммар</h3>
-                <p>Столица Орды, крепость орков</p>
-            </div>
-        </div>
-        
-        <div class="map-point" style="top: 12%; left: 49%;" data-location="northrend">
-            <div class="point"></div>
-            <div class="location-info">
-                <h3>Нордскол</h3>
-                <p>Ледяная пустошь, царство Короля-лича</p>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-    <!-- Футер -->
+    <!-- ===== ИНТЕРАКТИВНАЯ КАРТА АЗЕРОТА ===== -->
+    <section class="azeroth-map">
+        <h2 class="section-title" data-translate="mapTitle">Карта Азерота</h2>
+        <div class="map-container">
+            <img src="assets/image/map.jpg" alt="Detailed map of Azeroth world" class="map-image" loading="lazy">
+            
+            <!-- Интерактивные точки на карте -->
+            <div class="map-point" style="top: 66%; left: 84%;" data-location="stormwind">
+                <div class="point" aria-label="Stormwind"></div>
+                <div class="location-info">
+                    <h3 data-translate="stormwind">Штормград</h3>
+                    <p data-translate="stormwindDesc">Столица Альянса, королевство людей</p>
+                </div>
+            </div>
+            
+            <div class="map-point" style="top: 50%; left: 22%;" data-location="orgrimmar">
+                <div class="point" aria-label="Orgrimmar"></div>
+                <div class="location-info">
+                    <h3 data-translate="orgrimmar">Оргриммар</h3>
+                    <p data-translate="orgrimmarDesc">Столица Орды, крепость орков</p>
+                </div>
+            </div>
+            
+            <div class="map-point" style="top: 12%; left: 49%;" data-location="northrend">
+                <div class="point" aria-label="Northrend"></div>
+                <div class="location-info">
+                    <h3 data-translate="northrend">Нордскол</h3>
+                    <p data-translate="northrendDesc">Ледяная пустошь, царство Короля-лича</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ ===== -->
+    <section class="additional-info">
+        <div class="additional-container">
+            <h2 data-translate="communityTitle">Присоединяйтесь к нашему сообществу</h2>
+            <p data-translate="communityDesc">Узнавайте первыми о новых материалах, участвуйте в обсуждениях и делитесь своими знаниями о вселенной Warcraft</p>
+            <div class="community-links">
+                <a href="#" class="community-btn">
+                    <span class="icon">📖</span>
+                    <span data-translate="forum">Форум</span>
+                </a>
+                <a href="#" class="community-btn">
+                    <span class="icon">👥</span>
+                    <span data-translate="discord">Дискорд</span>
+                </a>
+                <a href="#" class="community-btn">
+                    <span class="icon">📷</span>
+                    <span data-translate="gallery">Галерея</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ФУТЕР ===== -->
     <footer>
-        <!-- Содержимое футера -->
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 data-translate="about">О сайте</h3>
+                <p data-translate="aboutDesc">Фанатский ресурс, посвященный вселенной Warcraft. Мы не связаны с Blizzard Entertainment.</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-translate="sections">Разделы</h3>
+                <ul class="footer-links">
+                    <li><a href="#" data-translate="lore">Лор</a></li>
+                    <li><a href="#" data-translate="races">Расы</a></li>
+                    <li><a href="#" data-translate="characters">Персонажи</a></li>
+                    <li><a href="#" data-translate="locations">Локации</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-translate="contacts">Контакты</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:info@example.com">Email</a></li>
+                    <li><a href="#" data-translate="discord">Discord</a></li>
+                    <li><a href="#" data-translate="forum">Форум</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-translate="language">Язык</h3>
+                <div class="language-selector">
+                    <select id="language-switcher">
+                        <option value="ru">Русский</option>
+                        <option value="en">English (US)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p data-translate="copyright">&copy; 2023 Azeroth Chronicles. Все права защищены.</p>
+        </div>
     </footer>
 
+    <!-- Подключение JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
